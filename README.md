@@ -3,7 +3,7 @@
 <!-- TODO: optional wide banner: media/banner.png (or reuse r1_simulation.png) -->
 <img src="media/r1_simulation.png" alt="Unitree R1 in mjlab" width="100%"/>
 
-# 🦾 Unitree R1 — Wire Insertion with mjlab
+# Unitree R1 — Wire Insertion with mjlab
 
 **Teaching a humanoid to walk, see and insert cables into a connector — from CAD to simulation, RL, vision and teleoperation.**
 
@@ -19,24 +19,24 @@
 
 ---
 
-## 📖 Overview
+## Overview
 
 This project builds a complete simulation pipeline for a **Unitree R1 humanoid** that must perform a precise manufacturing task: **insert 7 colour-coded cables, each into its assigned hole in a connector**, a job that is done by hand today in wire-harness production.
 
 It is built on **[mjlab](https://github.com/mujocolab/mjlab)** (MuJoCo-based, GPU-parallel RL) and covers the whole chain:
 
-1. 🛠️ **CAD → simulation**: SolidWorks model of the connector and cables, converted to MJCF
-2. 🚶 **RL locomotion**: walking and standing policy trained with PPO, exported to ONNX
-3. 👁️ **Vision**: connector-hole keypoint detection from the robot's eye camera
-4. 🎮 **Teleoperation**: a custom ESP32 arm-shaped device drives the robot's right arm over Wi-Fi
-5. 🔌 **Insertion**: cable inserted in simulation using teleoperation
-6. 🧠 **Next**: autonomous insertion policy trained with RL, seeded by teleop demonstrations
+1.  **CAD → simulation**: SolidWorks model of the connector and cables, converted to MJCF
+2.  **RL locomotion**: walking and standing policy trained with PPO, exported to ONNX
+3.  **Vision**: connector-hole keypoint detection from the robot's eye camera
+4.  **Teleoperation**: a custom ESP32 arm-shaped device drives the robot's right arm over Wi-Fi
+5.  **Insertion**: cable inserted in simulation using teleoperation
+6.  **Next**: autonomous insertion policy trained with RL, seeded by teleop demonstrations
 
 > Developed during an engineering internship at **Farness** (end application: Agilink cable/wire-harness production). <!-- TODO: remove this line if you prefer not to name the company -->
 
 ---
 
-## 🎬 Demos
+##  Demos
 
 > Click a preview to open the full video.
 
@@ -52,7 +52,7 @@ It is built on **[mjlab](https://github.com/mujocolab/mjlab)** (MuJoCo-based, GP
 
 ---
 
-## 🖼️ Gallery
+##  Gallery
 
 <table>
   <tr>
@@ -67,21 +67,21 @@ It is built on **[mjlab](https://github.com/mujocolab/mjlab)** (MuJoCo-based, GP
 
 ---
 
-## ✨ Features
+##  Features
 
-- 🤖 **Unitree R1** (MJCF from `unitree_rl_mjlab`) with interchangeable hands: Dex1, Dex3-1 and BrainCo Revo2
-- 🔌 **Custom wire-insertion scene**: 7-colour cable, connector and table, modelled from SolidWorks CAD
-- 🚶 **Velocity-tracking locomotion** (walking + zero-command standing) trained with PPO in thousands of parallel environments
-- 📦 **ONNX policy export** and deployment inside the manipulation simulation
-- 👁️ **Roboflow keypoint model** (RF-DETR) detecting connector holes from simulated eye-camera images
-- 🎮 **Wi-Fi teleoperation** with ESP32 + potentiometers streaming joint states over UDP
-- 🧮 **Arm IK** helper (`arm_ik.py`) for end-effector control
-- 📊 **Experiment tracking** with Weights & Biases
-- 🧩 **Clean task registration** via Python entry points: editable install, no changes to `site-packages`
+-  **Unitree R1** (MJCF from `unitree_rl_mjlab`) with interchangeable hands: Dex1, Dex3-1 and BrainCo Revo2
+-  **Custom wire-insertion scene**: 7-colour cable, connector and table, modelled from SolidWorks CAD
+-  **Velocity-tracking locomotion** (walking + zero-command standing) trained with PPO in thousands of parallel environments
+-  **ONNX policy export** and deployment inside the manipulation simulation
+-  **Roboflow keypoint model** (RF-DETR) detecting connector holes from simulated eye-camera images
+-  **Wi-Fi teleoperation** with ESP32 + potentiometers streaming joint states over UDP
+-  **Arm IK** helper (`arm_ik.py`) for end-effector control
+-  **Experiment tracking** with Weights & Biases
+-  **Clean task registration** via Python entry points: editable install, no changes to `site-packages`
 
 ---
 
-## 🏗️ Pipeline
+##  Pipeline
 
 ```mermaid
 flowchart LR
@@ -99,7 +99,7 @@ flowchart LR
 
 ---
 
-## 📁 Repository Structure
+##  Repository Structure
 
 ```
 ghaith_mjlab_project/
@@ -126,7 +126,7 @@ ghaith_mjlab_project/
 
 ---
 
-## 🚀 Getting Started
+##  Getting Started
 
 ### 1. Create the environment
 
@@ -161,7 +161,7 @@ wandb login
 
 ---
 
-## ▶️ Usage
+##  Usage
 
 ### Check the task (no training)
 
@@ -224,7 +224,7 @@ python scripts/sim_with_connector_detection.py
 
 ---
 
-## 🎮 Teleoperation Device
+##  Teleoperation Device
 
 <p align="center"><img src="media/teleoperation_device.jpg" width="60%"/></p>
 
@@ -234,7 +234,7 @@ Firmware: `src/ghaith_r1_wire/esp32_commander/esp32_5pot_joints_udp/`
 
 ---
 
-## 👁️ Vision
+##  Vision
 
 About 300 images were captured from the robot's simulated eye camera and annotated in **Roboflow** as a keypoint (skeleton) model that detects the connector holes. The model is then integrated back into the simulation.
 
@@ -248,7 +248,7 @@ export ROBOFLOW_API_KEY="your_key_here"
 
 ---
 
-## 🛣️ Roadmap
+##  Roadmap
 
 - [x] CAD of connector and cable, MJCF scene with R1 at a table
 - [x] RL walking + standing policy with W&B tracking
@@ -264,7 +264,7 @@ export ROBOFLOW_API_KEY="your_key_here"
 
 ---
 
-## 🙏 Acknowledgements
+##  Acknowledgements
 
 - [mjlab](https://github.com/mujocolab/mjlab) and [MuJoCo](https://mujoco.org/)
 - [Unitree](https://www.unitree.com/): R1 model from `unitree_rl_mjlab`, Dex1 and Dex3-1 hands
@@ -275,7 +275,7 @@ Third-party robot assets keep their original licenses.
 
 ---
 
-## 👤 Author
+##  Author
 
 **Ghaith Mhamdi** — Engineering student, École Polytechnique de Tunisie
 Robotics · Embedded Systems · FPGA · Autonomous Systems
