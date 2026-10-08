@@ -1,0 +1,208 @@
+<mujoco model="cable">
+
+  <compiler angle="radian" autolimits="true"/>
+
+  <!-- ============================================================
+       Cable geometry
+       - diameter 3 mm  -> radius 0.0015 m
+       - length  250 mm -> 0.25 m, built along +X
+       - split into 25 segments (10 mm each) connected by ball joints
+         so the cable can bend/flex realistically in every direction
+       Connector geometry (front tip)
+       - diameter 2.8 mm -> radius 0.0014 m
+       - length  10 mm   -> 0.01 m, along +X
+       - rigidly (fixed) attached: MuJoCo has no "fixed joint" type,
+         a body with NO <joint> element is rigidly welded to its
+         parent, which is how we realize the "fixed joint" you asked for
+       ============================================================ -->
+
+  <asset>
+    <material name="blue_cable" rgba="0 0 1 1" specular="0.3" shininess="0.4"/>
+    <material name="copper" rgba="1 0.752941176470588 0.752941176470588 1" specular="0.6" shininess="0.6"/>
+  </asset>
+
+  <default>
+    <default class="cable_link">
+      <!-- Collisions are ON here: the cable will now collide with the
+           table, connector, robot, floor, etc. Self-collision between
+           consecutive segments is handled separately below via
+           <contact><exclude .../></contact>, not by turning contype off. -->
+      <geom type="capsule" size="0.0015" material="blue_cable" density="2200"
+            condim="4" friction="0.8 0.005 0.0001" solref="0.01 1" solimp="0.99 0.99 0.01" priority="1"/>
+      <joint type="ball" damping="0.001" armature="0.00005"/>
+    </default>
+    <default class="connector">
+      <geom type="cylinder" size="0.0007" material="copper" density="8900"/>
+    </default>
+  </default>
+
+  <contact>
+    <!-- Adjacent segments always overlap slightly at their rounded
+         capsule caps (by design, since they share a joint point).
+         Without these excludes, the solver fights that permanent
+         "penetration" every step and injects huge forces, which is
+         what causes bodies to fly around / float / swallow gravity. -->
+    <exclude body1="B0" body2="B1"/>
+    <exclude body1="B1" body2="B2"/>
+    <exclude body1="B2" body2="B3"/>
+    <exclude body1="B3" body2="B4"/>
+    <exclude body1="B4" body2="B5"/>
+    <exclude body1="B5" body2="B6"/>
+    <exclude body1="B6" body2="B7"/>
+    <exclude body1="B7" body2="B8"/>
+    <exclude body1="B8" body2="B9"/>
+    <exclude body1="B9" body2="B10"/>
+    <exclude body1="B10" body2="B11"/>
+    <exclude body1="B11" body2="B12"/>
+    <exclude body1="B12" body2="B13"/>
+    <exclude body1="B13" body2="B14"/>
+    <exclude body1="B14" body2="B15"/>
+    <exclude body1="B15" body2="B16"/>
+    <exclude body1="B16" body2="B17"/>
+    <exclude body1="B17" body2="B18"/>
+    <exclude body1="B18" body2="B19"/>
+    <exclude body1="B19" body2="B20"/>
+    <exclude body1="B20" body2="B21"/>
+    <exclude body1="B21" body2="B22"/>
+    <exclude body1="B22" body2="B23"/>
+    <exclude body1="B23" body2="B24"/>
+    <exclude body1="B24" body2="connector"/>
+  </contact>
+
+  <worldbody>
+    <!-- Segment 0: rigidly attached to whatever frame this file gets
+         attached to (no joint = fixed to parent) -->
+    <body name="B0" pos="0 0 0">
+      <!--freejoint name="floating_base" /-->
+      <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+      <body name="B1" pos="0.01 0 0">
+        <joint class="cable_link"/>
+        <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+        <body name="B2" pos="0.01 0 0">
+          <joint class="cable_link"/>
+          <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+          <body name="B3" pos="0.01 0 0">
+            <joint class="cable_link"/>
+            <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+            <body name="B4" pos="0.01 0 0">
+              <joint class="cable_link"/>
+              <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+              <body name="B5" pos="0.01 0 0">
+                <joint class="cable_link"/>
+                <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                <body name="B6" pos="0.01 0 0">
+                  <joint class="cable_link"/>
+                  <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                  <body name="B7" pos="0.01 0 0">
+                    <joint class="cable_link"/>
+                    <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                    <body name="B8" pos="0.01 0 0">
+                      <joint class="cable_link"/>
+                      <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                      <body name="B9" pos="0.01 0 0">
+                        <joint class="cable_link"/>
+                        <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                        <body name="B10" pos="0.01 0 0">
+                          <joint class="cable_link"/>
+                          <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                          <body name="B11" pos="0.01 0 0">
+                            <joint class="cable_link"/>
+                            <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                            <body name="B12" pos="0.01 0 0">
+                              <joint class="cable_link"/>
+                              <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                              <body name="B13" pos="0.01 0 0">
+                                <joint class="cable_link"/>
+                                <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                                <body name="B14" pos="0.01 0 0">
+                                  <joint class="cable_link"/>
+                                  <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                                  <body name="B15" pos="0.01 0 0">
+                                    <joint class="cable_link"/>
+                                    <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                                    <body name="B16" pos="0.01 0 0">
+                                      <joint class="cable_link"/>
+                                      <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                                      <body name="B17" pos="0.01 0 0">
+                                        <joint class="cable_link"/>
+                                        <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                                        <body name="B18" pos="0.01 0 0">
+                                          <joint class="cable_link"/>
+                                          <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                                          <body name="B19" pos="0.01 0 0">
+                                            <joint class="cable_link"/>
+                                            <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                                            <body name="B20" pos="0.01 0 0">
+                                              <joint class="cable_link"/>
+                                              <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                                              <body name="B21" pos="0.01 0 0">
+                                                <!-- <joint class="cable_link"/> -->
+                                                <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                                                <body name="B22" pos="0.01 0 0">
+                                                  <!-- <joint class="cable_link"/> -->
+                                                  <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                                                  <body name="B23" pos="0.01 0 0">
+                                                    <!-- <joint class="cable_link"/> -->
+                                                    <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                                                    <body name="B24" pos="0.01 0 0">
+                                                      <!-- <joint class="cable_link"/> -->
+                                                      <geom class="cable_link" fromto="0 0 0  0.01 0 0"/>
+
+                                                      <!-- Front tip: mini connector cylinder,
+                                                           rigidly (fixed) attached, no joint -->
+                                                      <body name="connector" pos="0.01 0 0">
+                                                        <geom class="connector" fromto="0 0 0  0.01 0 0"/>
+                                                      </body>
+
+                                                    </body>
+                                                  </body>
+                                                </body>
+                                              </body>
+                                            </body>
+                                          </body>
+                                        </body>
+                                      </body>
+                                    </body>
+                                  </body>
+                                </body>
+                              </body>
+                            </body>
+                          </body>
+                        </body>
+                      </body>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+
+</mujoco>

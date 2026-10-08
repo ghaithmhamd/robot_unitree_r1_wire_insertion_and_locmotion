@@ -1,0 +1,12 @@
+<mujoco model="table">
+  <worldbody>
+    <body name="table" pos="0 0 0">
+      <geom name="table_top" type="box" size="0.4 0.3 0.02" pos="0 0 0.75"
+            rgba="0.55 0.4 0.25 1"/>
+      <geom name="table_leg_fl" type="box" size="0.02 0.02 0.375" pos="0.35 0.25 0.375"/>
+      <geom name="table_leg_fr" type="box" size="0.02 0.02 0.375" pos="0.35 -0.25 0.375"/>
+      <geom name="table_leg_bl" type="box" size="0.02 0.02 0.375" pos="-0.35 0.25 0.375"/>
+      <geom name="table_leg_br" type="box" size="0.02 0.02 0.375" pos="-0.35 -0.25 0.375"/>
+    </body>
+  </worldbody>
+</mujoco>

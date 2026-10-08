@@ -1,0 +1,112 @@
+<mujoco model="dex3_1_l">
+  <default>
+    <default class="robot">
+      <default class="motor">
+        <joint />
+        <motor />
+      </default>
+      <default class="visual">
+        <geom material="visualgeom" contype="0" conaffinity="0" group="2" />
+      </default>
+      <default class="collision">
+        <geom material="collision_material" condim="3" contype="0" conaffinity="1" priority="1" group="1" solref="0.005 1" solimp="0.99 0.999 1e-05" friction="1 0.01 0.01" />
+      </default>
+    </default>
+  </default>
+
+  <compiler angle="radian" meshdir="meshes"/>
+
+  <asset>
+    <material name="white" rgba="0.7 0.7 0.7 1" />
+    <material name="collision_material" rgba="1.0 0.28 0.1 0.9" />
+    <mesh name="left_hand_palm_link.STL" file="left_hand_palm_link.STL" />
+    <mesh name="left_hand_thumb_0_link.STL" file="left_hand_thumb_0_link.STL" />
+    <mesh name="left_hand_thumb_1_link.STL" file="left_hand_thumb_1_link.STL" />
+    <mesh name="left_hand_thumb_2_link.STL" file="left_hand_thumb_2_link.STL" />
+    <mesh name="left_hand_middle_0_link.STL" file="left_hand_middle_0_link.STL" />
+    <mesh name="left_hand_middle_1_link.STL" file="left_hand_middle_1_link.STL" />
+    <mesh name="left_hand_index_0_link.STL" file="left_hand_index_0_link.STL" />
+    <mesh name="left_hand_index_1_link.STL" file="left_hand_index_1_link.STL" />
+  </asset>
+
+  <worldbody>
+    <body name="left_hand_palm_link" pos="0.00000000 0.00000000 0.02850000" quat="1 0 0 0" childclass="robot">
+      <freejoint name="floating_base" />
+      <geom name="left_hand_palm_link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="left_hand_palm_link.STL" class="collision" />
+      <geom name="left_hand_palm_link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="white" type="mesh" mesh="left_hand_palm_link.STL" class="visual" />
+      <body name="left_hand_thumb_0_link" pos="0.0255 0 0" quat="1.0 0.0 0.0 0.0">
+        <joint name="left_hand_thumb_0_joint" type="hinge" ref="0.0" class="motor" range="-1.04719755 1.04719755" axis="0 1 0" />
+        <inertial pos="-0.00088424580 -0.00863407079 0.00094429336" quat="1.0 0.0 0.0 0.0" mass="0.08623657" diaginertia="1.602919238e-05 1.451795012e-05 1.637877663e-05" />
+        <geom name="left_hand_thumb_0_link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="left_hand_thumb_0_link.STL" class="collision" />
+        <geom name="left_hand_thumb_0_link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="white" type="mesh" mesh="left_hand_thumb_0_link.STL" class="visual" />
+        <body name="left_hand_thumb_1_link" pos="-0.0025 -0.0193 0" quat="1.0 0.0 0.0 0.0">
+          <joint name="left_hand_thumb_1_joint" type="hinge" ref="0.0" class="motor" range="-0.61086523 1.04719755" axis="0 0 1" />
+          <inertial pos="-0.00082788768 -0.03547435774 -0.00038089960" quat="1.0 0.0 0.0 0.0" mass="0.05885070" diaginertia="1.274699945e-05 6.01573947e-06 1.234543582e-05" />
+          <geom name="left_hand_thumb_1_link_collision" pos="-0.001 -0.032 0" quat="1.0 0.0 0.0 0.0" type="box" size="0.01 0.015 0.01" class="collision" />
+          <geom name="left_hand_thumb_1_link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="white" type="mesh" mesh="left_hand_thumb_1_link.STL" class="visual" />
+          <body name="left_hand_thumb_2_link" pos="0 -0.0458 0" quat="1.0 0.0 0.0 0.0">
+            <joint name="left_hand_thumb_2_joint" type="hinge" ref="0.0" class="motor" range="0 1.74532925" axis="0 0 1" />
+            <inertial pos="-0.00171735242 -0.02628192939 0.00010778879" quat="1.0 0.0 0.0 0.0" mass="0.02030626" diaginertia="4.61267817e-06 1.53561368e-06 3.86625776e-06" />
+            <geom name="left_hand_thumb_2_link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="left_hand_thumb_2_link.STL" class="collision" />
+            <geom name="left_hand_thumb_2_link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="white" type="mesh" mesh="left_hand_thumb_2_link.STL" class="visual" />
+          </body>
+        </body>
+      </body>
+      <body name="left_hand_middle_0_link" pos="0.0777 0.0016 -0.0285" quat="1.0 0.0 0.0 0.0">
+        <joint name="left_hand_middle_0_joint" type="hinge" ref="0.0" class="motor" range="-1.57079632 0" axis="0 0 1" />
+        <inertial pos="0.03547435774 0.00082788768 0.00038089960" quat="1.0 0.0 0.0 0.0" mass="0.05885070" diaginertia="6.01573947e-06 1.274699945e-05 1.234543582e-05" />
+        <geom name="left_hand_middle_0_link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="left_hand_middle_0_link.STL" class="collision" />
+        <geom name="left_hand_middle_0_link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="white" type="mesh" mesh="left_hand_middle_0_link.STL" class="visual" />
+        <body name="left_hand_middle_1_link" pos="0.0458 0 0" quat="1.0 0.0 0.0 0.0">
+          <joint name="left_hand_middle_1_joint" type="hinge" ref="0.0" class="motor" range="-1.74532925 0" axis="0 0 1" />
+          <inertial pos="0.02628192939 0.00171735242 -0.00010778879" quat="1.0 0.0 0.0 0.0" mass="0.02030626" diaginertia="1.53561368e-06 4.61267817e-06 3.86625776e-06" />
+          <geom name="left_hand_middle_1_link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="left_hand_middle_1_link.STL" class="collision" />
+          <geom name="left_hand_middle_1_link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="white" type="mesh" mesh="left_hand_middle_1_link.STL" class="visual" />
+        </body>
+      </body>
+      <body name="left_hand_index_0_link" pos="0.0777 0.0016 0.0285" quat="1.0 0.0 0.0 0.0">
+        <joint name="left_hand_index_0_joint" type="hinge" ref="0.0" class="motor" range="-1.57079632 0" axis="0 0 1" />
+        <inertial pos="0.03547435774 0.00082788768 0.00038089960" quat="1.0 0.0 0.0 0.0" mass="0.05885070" diaginertia="6.01573947e-06 1.274699945e-05 1.234543582e-05" />
+        <geom name="left_hand_index_0_link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="left_hand_index_0_link.STL" class="collision" />
+        <geom name="left_hand_index_0_link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="white" type="mesh" mesh="left_hand_index_0_link.STL" class="visual" />
+        <body name="left_hand_index_1_link" pos="0.0458 0 0" quat="1.0 0.0 0.0 0.0">
+          <joint name="left_hand_index_1_joint" type="hinge" ref="0.0" class="motor" range="-1.74532925 0" axis="0 0 1" />
+          <inertial pos="0.02628192939 0.00171735242 -0.00010778879" quat="1.0 0.0 0.0 0.0" mass="0.02030626" diaginertia="1.53561368e-06 4.61267817e-06 3.86625776e-06" />
+          <geom name="left_hand_index_1_link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="left_hand_index_1_link.STL" class="collision" />
+          <geom name="left_hand_index_1_link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="white" type="mesh" mesh="left_hand_index_1_link.STL" class="visual" />
+        </body>
+      </body>
+      <site name="left_hand_palm_link_site" pos="0 0 0" quat="1 0 0 0" />
+      <camera name="front_camera" mode="track" fovy="90.0" quat="4.329780281177467e-17 4.329780281177466e-17 0.7071067811865475 0.7071067811865476" pos="0.0 2.0 0.5" />
+      <camera name="side_camera" mode="track" fovy="90.0" quat="-0.5 -0.4999999999999999 0.5 0.5000000000000001" pos="-2.0 0.0 0.5" />
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor name="left_hand_thumb_0_joint_ctrl" joint="left_hand_thumb_0_joint" class="motor" />
+    <motor name="left_hand_thumb_1_joint_ctrl" joint="left_hand_thumb_1_joint" class="motor" />
+    <motor name="left_hand_thumb_2_joint_ctrl" joint="left_hand_thumb_2_joint" class="motor" />
+    <motor name="left_hand_middle_0_joint_ctrl" joint="left_hand_middle_0_joint" class="motor" />
+    <motor name="left_hand_middle_1_joint_ctrl" joint="left_hand_middle_1_joint" class="motor" />
+    <motor name="left_hand_index_0_joint_ctrl" joint="left_hand_index_0_joint" class="motor" />
+    <motor name="left_hand_index_1_joint_ctrl" joint="left_hand_index_1_joint" class="motor" />
+  </actuator>
+
+  <contact>
+    <exclude body1="left_hand_palm_link" body2="left_hand_thumb_0_link" />
+    <exclude body1="left_hand_thumb_0_link" body2="left_hand_thumb_1_link" />
+    <exclude body1="left_hand_thumb_1_link" body2="left_hand_thumb_2_link" />
+    <exclude body1="left_hand_palm_link" body2="left_hand_middle_0_link" />
+    <exclude body1="left_hand_middle_0_link" body2="left_hand_middle_1_link" />
+    <exclude body1="left_hand_palm_link" body2="left_hand_index_0_link" />
+    <exclude body1="left_hand_index_0_link" body2="left_hand_index_1_link" />
+  </contact>
+
+  <sensor>
+    <framepos name="left_hand_palm_link_site_pos" objtype="site" objname="left_hand_palm_link_site" />
+    <framequat name="left_hand_palm_link_site_quat" objtype="site" objname="left_hand_palm_link_site" />
+    <framelinvel name="left_hand_palm_link_site_linvel" objtype="site" objname="left_hand_palm_link_site" />
+    <frameangvel name="left_hand_palm_link_site_angvel" objtype="site" objname="left_hand_palm_link_site" />
+    <velocimeter name="left_hand_palm_link_site_vel" site="left_hand_palm_link_site" />
+  </sensor>
+</mujoco>

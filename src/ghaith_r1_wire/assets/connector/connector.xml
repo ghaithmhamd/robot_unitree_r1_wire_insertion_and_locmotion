@@ -1,0 +1,127 @@
+<mujoco model="Assem_connector">
+  <default>
+    <default class="robot">
+      <default class="motor">
+        <joint />
+        <motor />
+      </default>
+      <default class="visual">
+        <geom material="visualgeom" contype="0" conaffinity="0" group="2" />
+      </default>
+      <default class="collision">
+        <geom condim="3" contype="0" conaffinity="1" priority="1" group="3" solref="0.005 1" solimp="0.99 0.999 1e-05" friction="1 0.01 0.01" />
+      </default>
+    </default>
+  </default>
+
+  <compiler angle="radian" />
+
+  <asset>
+    <material name="grey" rgba="0.5 0.5 0.5 1" />
+    <material name="white" rgba="1 1 1 1" />
+    <material name="copper" rgba="0.87 0.51 0.26 1.0" />
+    <mesh name="base_link.STL" file="meshes/base_link.STL" />
+    <mesh name="head_low_Link.STL" file="meshes/head_low_Link.STL" />
+    <mesh name="head_hight_Link.STL" file="meshes/head_hight_Link.STL" />
+    <mesh name="screw_1_Link.STL" file="meshes/screw_1_Link.STL" />
+    <mesh name="screw_2_Link.STL" file="meshes/screw_2_Link.STL" />
+    <mesh name="screw_3_Link.STL" file="meshes/screw_3_Link.STL" />
+    <mesh name="screw_4_Link.STL" file="meshes/screw_4_Link.STL" />
+    <mesh name="screw_5_Link.STL" file="meshes/screw_5_Link.STL" />
+    <mesh name="screw_6_Link.STL" file="meshes/screw_6_Link.STL" />
+    <mesh name="screw_7_Link.STL" file="meshes/screw_7_Link.STL" />
+  </asset>
+
+  <worldbody>
+    <body name="base_link" pos="0.00000000 0.00000000 0.00862140" quat="1 0 0 0" childclass="robot">
+      <!-- <freejoint name="floating_base" /> -->
+      <geom name="base_link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="base_link.STL" class="collision" />
+      <geom name="base_link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="white" type="mesh" mesh="base_link.STL" class="visual" />
+      <body name="head_low_Link" pos="0 -0.0301 0" quat="0.7071067811865462 0.7071067811865488 0.0 0.0">
+        <inertial pos="-0.00200000000000001 1.20549704056784E-16 0.00494863737486097" quat="1.0 0.0 0.0 0.0" mass="4.70715299262856E-06" diaginertia="1.76518018923944e-11 1.76518018923944e-11 3.52957777551172e-11" />
+        <geom name="head_low_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="head_low_Link.STL" class="collision" />
+        <geom name="head_low_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="copper" type="mesh" mesh="head_low_Link.STL" class="visual" />
+      </body>
+      <body name="head_hight_Link" pos="0 -0.0301 0" quat="0.7071067811865462 0.7071067811865488 0.0 0.0">
+        <inertial pos="0.00735955056179803 1.28243143167084E-36 0.0126373595505618" quat="1.0 0.0 0.0 0.0" mass="2.33001455141244E-05" diaginertia="1.12192610585733e-10 1.12192610585733e-10 2.2342614253249e-10" />
+        <geom name="head_hight_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="head_hight_Link.STL" class="collision" />
+        <geom name="head_hight_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="copper" type="mesh" mesh="head_hight_Link.STL" class="visual" />
+      </body>
+      <body name="screw_1_Link" pos="0.01 -0.039 -0.0011996" quat="0.18025562481866086 0.0 0.0 -0.9836197993743488">
+        <joint name="screw_1_joint" type="hinge" ref="0.0" class="motor" axis="0 0 1" />
+        <inertial pos="-1.0406E-10 -3.4694E-17 -0.0052871" quat="1.0 0.0 0.0 0.0" mass="7.9714E-05" diaginertia="5.2401e-10 5.2401e-10 1.9242e-10" />
+        <geom name="screw_1_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="screw_1_Link.STL" class="collision" />
+        <geom name="screw_1_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="grey" type="mesh" mesh="screw_1_Link.STL" class="visual" />
+      </body>
+      <body name="screw_2_Link" pos="0.0064559 -0.0325 -0.0068776" quat="0.30878926234067466 0.33649816284823186 0.11784135222119504 0.8817775193151315">
+        <joint name="screw_2_joint" type="hinge" ref="0.0" class="motor" axis="0 0 1" />
+        <inertial pos="-5.8518E-11 2.9509E-11 -0.0091275" quat="1.0 0.0 0.0 0.0" mass="7.9714E-05" diaginertia="5.2401e-10 5.2401e-10 1.9242e-10" />
+        <geom name="screw_2_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="screw_2_Link.STL" class="collision" />
+        <geom name="screw_2_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="grey" type="mesh" mesh="screw_2_Link.STL" class="visual" />
+      </body>
+      <body name="screw_3_Link" pos="-0.0060383 -0.032469 -0.0086214" quat="0.20900875132315455 -0.7160709352934613 0.24302598419680535 -0.6200775181406414">
+        <joint name="screw_3_joint" type="hinge" ref="0.0" class="motor" axis="0 0 1" />
+        <inertial pos="1.1437E-10 -1.6994E-10 -0.0051248" quat="1.0 0.0 0.0 0.0" mass="7.9714E-05" diaginertia="5.2401e-10 5.2401e-10 1.9242e-10" />
+        <geom name="screw_3_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="screw_3_Link.STL" class="collision" />
+        <geom name="screw_3_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="grey" type="mesh" mesh="screw_3_Link.STL" class="visual" />
+      </body>
+      <body name="screw_4_Link" pos="-0.010728 -0.032499 0.0019994" quat="0.14374315103103252 0.5525115293592573 0.8152173357550389 0.09741463925520014">
+        <joint name="screw_4_joint" type="hinge" ref="0.0" class="motor" axis="0 0 1" />
+        <inertial pos="3.2302E-11 -3.2713E-10 -0.0043159" quat="1.0 0.0 0.0 0.0" mass="7.9714E-05" diaginertia="5.2401e-10 5.2401e-10 1.9242e-10" />
+        <geom name="screw_4_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="screw_4_Link.STL" class="collision" />
+        <geom name="screw_4_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="grey" type="mesh" mesh="screw_4_Link.STL" class="visual" />
+      </body>
+      <body name="screw_5_Link" pos="-0.0061799 -0.032498 0.0072633" quat="0.28687037027476625 -0.565975891019622 -0.7412107155493775 0.21905103651373892">
+        <joint name="screw_5_joint" type="hinge" ref="0.0" class="motor" axis="0 0 1" />
+        <inertial pos="-1.0603E-10 3.7974E-11 -0.0086495" quat="1.0 0.0 0.0 0.0" mass="7.9714E-05" diaginertia="5.2401e-10 5.2401e-10 1.9242e-10" />
+        <geom name="screw_5_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="screw_5_Link.STL" class="collision" />
+        <geom name="screw_5_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="grey" type="mesh" mesh="screw_5_Link.STL" class="visual" />
+      </body>
+      <body name="screw_6_Link" pos="0.0061504 -0.0325 0.0086039" quat="0.008306014882358721 -0.6545451629643141 -0.007218067495467884 0.7559428148070624">
+        <joint name="screw_6_joint" type="hinge" ref="0.0" class="motor" axis="0 0 1" />
+        <inertial pos="1.7065E-10 5.9839E-12 -0.0051173" quat="1.0 0.0 0.0 0.0" mass="7.9714E-05" diaginertia="5.2401e-10 5.2401e-10 1.9242e-10" />
+        <geom name="screw_6_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="screw_6_Link.STL" class="collision" />
+        <geom name="screw_6_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="grey" type="mesh" mesh="screw_6_Link.STL" class="visual" />
+      </body>
+      <body name="screw_7_Link" pos="0 -0.039 -0.00126211282229436" quat="0.8417839447226148 0.0 0.0 -0.5398145889166334">
+        <joint name="screw_7_joint" type="hinge" ref="0.0" class="motor" axis="0 0 1" />
+        <inertial pos="0 0 0" quat="1.0 0.0 0.0 0.0" mass="7.9714E-05" diaginertia="5.2401e-10 5.2401e-10 1.9242e-10" />
+        <geom name="screw_7_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="screw_7_Link.STL" class="collision" />
+        <geom name="screw_7_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="grey" type="mesh" mesh="screw_7_Link.STL" class="visual" />
+      </body>
+      <site name="base_link_site" pos="0 0 0" quat="1 0 0 0" />
+      <camera name="front_camera" mode="track" fovy="90.0" quat="4.329780281177467e-17 4.329780281177466e-17 0.7071067811865475 0.7071067811865476" pos="0.0 2.0 0.5" />
+      <camera name="side_camera" mode="track" fovy="90.0" quat="-0.5 -0.4999999999999999 0.5 0.5000000000000001" pos="-2.0 0.0 0.5" />
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor name="screw_1_joint_ctrl" joint="screw_1_joint" class="motor" />
+    <motor name="screw_2_joint_ctrl" joint="screw_2_joint" class="motor" />
+    <motor name="screw_3_joint_ctrl" joint="screw_3_joint" class="motor" />
+    <motor name="screw_4_joint_ctrl" joint="screw_4_joint" class="motor" />
+    <motor name="screw_5_joint_ctrl" joint="screw_5_joint" class="motor" />
+    <motor name="screw_6_joint_ctrl" joint="screw_6_joint" class="motor" />
+    <motor name="screw_7_joint_ctrl" joint="screw_7_joint" class="motor" />
+  </actuator>
+
+  <contact>
+    <exclude body1="base_link" body2="head_low_Link" />
+    <exclude body1="base_link" body2="head_hight_Link" />
+    <exclude body1="base_link" body2="screw_1_Link" />
+    <exclude body1="base_link" body2="screw_2_Link" />
+    <exclude body1="base_link" body2="screw_3_Link" />
+    <exclude body1="base_link" body2="screw_4_Link" />
+    <exclude body1="base_link" body2="screw_5_Link" />
+    <exclude body1="base_link" body2="screw_6_Link" />
+    <exclude body1="base_link" body2="screw_7_Link" />
+  </contact>
+
+  <sensor>
+    <framepos name="base_link_site_pos" objtype="site" objname="base_link_site" />
+    <framequat name="base_link_site_quat" objtype="site" objname="base_link_site" />
+    <framelinvel name="base_link_site_linvel" objtype="site" objname="base_link_site" />
+    <frameangvel name="base_link_site_angvel" objtype="site" objname="base_link_site" />
+    <velocimeter name="base_link_site_vel" site="base_link_site" />
+  </sensor>
+</mujoco>

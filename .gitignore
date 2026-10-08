@@ -1,0 +1,10 @@
+notebooks/
+wandb/
+logs/
+__pycache__/
+*.pyc
+MUJOCO_LOG.TXT
+*.pt
+*.zip
+.ipynb_checkpoints/
+src/ghaith_r1_wire/model/roboflow_cache/

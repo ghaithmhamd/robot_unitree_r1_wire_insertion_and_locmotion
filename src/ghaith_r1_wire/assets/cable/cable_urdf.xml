@@ -1,0 +1,182 @@
+<mujoco model="Assem_cable">
+  <default>
+    <default class="robot">
+      <default class="motor">
+        <joint />
+        <motor />
+      </default>
+      <default class="visual">
+        <geom material="visualgeom" contype="0" conaffinity="0" group="2" />
+      </default>
+      <default class="collision">
+        <geom condim="3" contype="0" conaffinity="1" priority="1" group="1" solref="0.005 1" solimp="0.99 0.999 1e-05" friction="1 0.01 0.01" />
+      </default>
+    </default>
+  </default>
+
+  <compiler angle="radian" />
+
+  <asset>
+    <material name="black" rgba="0 0 0 1" />
+    <material name="white" rgba="1 1 1 1" />
+    <material name="copper" rgba="1 0.752941176470588 0.752941176470588 1" />
+    <material name="brown" rgba="0.729411764705882 0.356862745098039 0.0235294117647059 1" />
+    <material name="green" rgba="0 0.752941176470588 0 1" />
+    <material name="red" rgba="1 0 0 1" />
+    <material name="yellow" rgba="1 1 0 1" />
+    <material name="blue" rgba="0 0.313725490196078 1 1" />
+
+    <mesh name="base_link.STL" file="meshes/base_link.STL" />
+    <mesh name="white_Link.STL" file="meshes/white_Link.STL" />
+    <mesh name="c_white_Link.STL" file="meshes/c_white_Link.STL" />
+    <mesh name="brown_Link.STL" file="meshes/brown_Link.STL" />
+    <mesh name="c_brown_Link.STL" file="meshes/c_brown_Link.STL" />
+    <mesh name="green_Link.STL" file="meshes/green_Link.STL" />
+    <mesh name="c_green_Link.STL" file="meshes/c_green_Link.STL" />
+    <mesh name="red_Link.STL" file="meshes/red_Link.STL" />
+    <mesh name="c_red_Link.STL" file="meshes/c_red_Link.STL" />
+    <mesh name="yellow_Link.STL" file="meshes/yellow_Link.STL" />
+    <mesh name="c_yellow_Link.STL" file="meshes/c_yellow_Link.STL" />
+    <mesh name="blue_Link.STL" file="meshes/blue_Link.STL" />
+    <mesh name="c_blue_Link.STL" file="meshes/c_blue_Link.STL" />
+    <mesh name="black_Link.STL" file="meshes/black_Link.STL" />
+    <mesh name="c_black_Link.STL" file="meshes/c_black_Link.STL" />
+  </asset>
+
+  <worldbody>
+    <body name="base_link" pos="0.00000000 0.00000000 0.00341225" quat="1 0 0 0" childclass="robot">
+      <freejoint name="floating_base" />
+      <geom name="base_link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="base_link.STL" class="collision" />
+      <geom name="base_link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="black" type="mesh" mesh="base_link.STL" class="visual" />
+      <body name="white_Link" pos="0.5 0.00218221437473327 0.00273641013422833" quat="0.8462268532257802 0.5328227781163207 0.0 0.0">
+        <joint name="white_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+        <inertial pos="0.025 -4.3368E-19 -2.1684E-19" quat="1.0 0.0 0.0 0.0" mass="0.00035343" diaginertia="3.9761e-10 7.383e-08 7.383e-08" />
+        <geom name="white_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="white_Link.STL" class="collision" />
+        <geom name="white_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="white" type="mesh" mesh="white_Link.STL" class="visual" />
+        <body name="c_white_Link" pos="0.05 0 0" quat="0.9751353459148078 0.22161014676139754 0.0 0.0">
+          <joint name="c_white_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+          <inertial pos="0.0049865416098227 -2.68882138776405E-17 1.0842021724855E-17" quat="1.0 0.0 0.0 0.0" mass="6.14076644021682E-05" diaginertia="6.00447326004955e-11 5.39061211502602e-10 5.39061211502602e-10" />
+          <geom name="c_white_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="c_white_Link.STL" class="collision" />
+          <geom name="c_white_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="copper" type="mesh" mesh="c_white_Link.STL" class="visual" />
+        </body>
+      </body>
+      <body name="brown_Link" pos="0.5 0.0035 0" quat="0.955512291536803 -0.294951285337236 0.0 0.0">
+        <joint name="brown_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+        <inertial pos="0.025 -8.19656842399041E-17 8.23993651088983E-18" quat="1.0 0.0 0.0 0.0" mass="0.000353429173528853" diaginertia="3.9760782021996e-10 7.38298817286211e-08 7.38298817286211e-08" />
+        <geom name="brown_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="brown_Link.STL" class="collision" />
+        <geom name="brown_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="brown" type="mesh" mesh="brown_Link.STL" class="visual" />
+        <body name="c_brown_Link" pos="0.05 0 0" quat="0.6008837159724685 -0.7993364497376044 0.0 0.0">
+          <joint name="c_brown_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+          <inertial pos="0.00498654160982259 -5.5944832100252E-17 2.03830008427275E-17" quat="1.0 0.0 0.0 0.0" mass="6.14076644021682E-05" diaginertia="6.00447326004955e-11 5.39061211502601e-10 5.39061211502602e-10" />
+          <geom name="c_brown_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="c_brown_Link.STL" class="collision" />
+          <geom name="c_brown_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="copper" type="mesh" mesh="c_brown_Link.STL" class="visual" />
+        </body>
+      </body>
+      <body name="green_Link" pos="0.5 0.00218221389713953 -0.00273641051509658" quat="0.7071067811865462 0.7071067811865488 0.0 0.0">
+        <joint name="green_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+        <inertial pos="0.025 0 0" quat="1.0 0.0 0.0 0.0" mass="0.000353429173528853" diaginertia="3.9760782021996e-10 7.38298817286211e-08 7.38298817286211e-08" />
+        <geom name="green_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="green_Link.STL" class="collision" />
+        <geom name="green_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="green" type="mesh" mesh="green_Link.STL" class="visual" />
+        <body name="c_green_Link" pos="0.05 0 0" quat="1.0 0.0 0.0 0.0">
+          <joint name="c_green_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+          <inertial pos="0.0049865416098227 4.33680868994202E-19 -4.33680868994202E-19" quat="1.0 0.0 0.0 0.0" mass="6.14076644021682E-05" diaginertia="6.00447326004955e-11 5.39061211502602e-10 5.39061211502602e-10" />
+          <geom name="c_green_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="c_green_Link.STL" class="collision" />
+          <geom name="c_green_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="copper" type="mesh" mesh="c_green_Link.STL" class="visual" />
+        </body>
+      </body>
+      <body name="red_Link" pos="0.5 -0.00077882369423966 -0.00341224759554328" quat="0.7071067811865462 0.7071067811865488 0.0 0.0">
+        <joint name="red_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+        <inertial pos="0.025 0 -5.42101086242752E-19" quat="1.0 0.0 0.0 0.0" mass="0.000353429173528853" diaginertia="3.9760782021996e-10 7.38298817286211e-08 7.38298817286211e-08" />
+        <geom name="red_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="red_Link.STL" class="collision" />
+        <geom name="red_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="red" type="mesh" mesh="red_Link.STL" class="visual" />
+        <body name="c_red_Link" pos="0.05 0 0" quat="1.0 0.0 0.0 0.0">
+          <joint name="c_red_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+          <inertial pos="0.0049865416098227 -3.10949183068843E-16 -9.97465998686664E-18" quat="1.0 0.0 0.0 0.0" mass="6.14076644021682E-05" diaginertia="6.00447326004955e-11 5.39061211502602e-10 5.39061211502602e-10" />
+          <geom name="c_red_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="c_red_Link.STL" class="collision" />
+          <geom name="c_red_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="copper" type="mesh" mesh="c_red_Link.STL" class="visual" />
+        </body>
+      </body>
+      <body name="yellow_Link" pos="0.5 -0.00315339118911246 -0.00151859277241396" quat="0.7071067811865462 0.7071067811865488 0.0 0.0">
+        <joint name="yellow_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+        <inertial pos="0.025 0 4.33680868994202E-19" quat="1.0 0.0 0.0 0.0" mass="0.000353429173528853" diaginertia="3.9760782021996e-10 7.38298817286211e-08 7.38298817286211e-08" />
+        <geom name="yellow_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="yellow_Link.STL" class="collision" />
+        <geom name="yellow_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="yellow" type="mesh" mesh="yellow_Link.STL" class="visual" />
+        <body name="c_yellow_Link" pos="0.05 0 0" quat="1.0 0.0 0.0 0.0">
+          <joint name="c_yellow_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+          <inertial pos="0.0049865416098227 2.35705552298349E-16 4.7271214720368E-17" quat="1.0 0.0 0.0 0.0" mass="6.14076644021682E-05" diaginertia="6.00447326004955e-11 5.39061211502602e-10 5.39061211502602e-10" />
+          <geom name="c_yellow_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="c_yellow_Link.STL" class="collision" />
+          <geom name="c_yellow_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="copper" type="mesh" mesh="c_yellow_Link.STL" class="visual" />
+        </body>
+      </body>
+      <body name="blue_Link" pos="0.5 -0.00315339092406795 0.00151859332278458" quat="0.7071067811865462 0.7071067811865488 0.0 0.0">
+        <joint name="blue_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+        <inertial pos="0.025 -2.16840434497101E-19 -4.33680868994202E-19" quat="1.0 0.0 0.0 0.0" mass="0.000353429173528853" diaginertia="3.9760782021996e-10 7.38298817286211e-08 7.38298817286211e-08" />
+        <geom name="blue_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="blue_Link.STL" class="collision" />
+        <geom name="blue_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="blue" type="mesh" mesh="blue_Link.STL" class="visual" />
+        <body name="c_blue_Link" pos="0.05 0 0" quat="1.0 0.0 0.0 0.0">
+          <joint name="c_blue_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+          <inertial pos="0.0049865416098227 1.45283091113058E-17 1.38777878078145E-17" quat="1.0 0.0 0.0 0.0" mass="6.14076644021682E-05" diaginertia="6.00447326004955e-11 5.39061211502602e-10 5.39061211502602e-10" />
+          <geom name="c_blue_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="c_blue_Link.STL" class="collision" />
+          <geom name="c_blue_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="copper" type="mesh" mesh="c_blue_Link.STL" class="visual" />
+        </body>
+      </body>
+      <body name="black_Link" pos="0.5 -0.000778823098690045 0.00341224773147362" quat="0.7071067811865462 0.7071067811865488 0.0 0.0">
+        <joint name="black_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+        <inertial pos="0.025 0 -3.25260651745651E-19" quat="1.0 0.0 0.0 0.0" mass="0.000353429173528853" diaginertia="3.9760782021996e-10 7.38298817286211e-08 7.38298817286211e-08" />
+        <geom name="black_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="black_Link.STL" class="collision" />
+        <geom name="black_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="black" type="mesh" mesh="black_Link.STL" class="visual" />
+        <body name="c_black_Link" pos="0.05 0 0" quat="1.0 0.0 0.0 0.0">
+          <joint name="c_black_joint" type="hinge" ref="0.0" class="motor" axis="1 0 0" />
+          <inertial pos="0.0049865416098227 3.25260651745651E-17 -5.42101086242752E-18" quat="1.0 0.0 0.0 0.0" mass="6.14076644021682E-05" diaginertia="6.00447326004955e-11 5.39061211502602e-10 5.39061211502602e-10" />
+          <geom name="c_black_Link_collision" pos="0 0 0" quat="1.0 0.0 0.0 0.0" type="mesh" mesh="c_black_Link.STL" class="collision" />
+          <geom name="c_black_Link_visual" pos="0 0 0" quat="1.0 0.0 0.0 0.0" material="copper" type="mesh" mesh="c_black_Link.STL" class="visual" />
+        </body>
+      </body>
+      <site name="base_link_site" pos="0 0 0" quat="1 0 0 0" />
+      <camera name="front_camera" mode="track" fovy="90.0" quat="4.329780281177467e-17 4.329780281177466e-17 0.7071067811865475 0.7071067811865476" pos="0.0 2.0 0.5" />
+      <camera name="side_camera" mode="track" fovy="90.0" quat="-0.5 -0.4999999999999999 0.5 0.5000000000000001" pos="-2.0 0.0 0.5" />
+    </body>
+  </worldbody>
+
+  <actuator>
+    <motor name="white_joint_ctrl" joint="white_joint" class="motor" />
+    <motor name="c_white_joint_ctrl" joint="c_white_joint" class="motor" />
+    <motor name="brown_joint_ctrl" joint="brown_joint" class="motor" />
+    <motor name="c_brown_joint_ctrl" joint="c_brown_joint" class="motor" />
+    <motor name="green_joint_ctrl" joint="green_joint" class="motor" />
+    <motor name="c_green_joint_ctrl" joint="c_green_joint" class="motor" />
+    <motor name="red_joint_ctrl" joint="red_joint" class="motor" />
+    <motor name="c_red_joint_ctrl" joint="c_red_joint" class="motor" />
+    <motor name="yellow_joint_ctrl" joint="yellow_joint" class="motor" />
+    <motor name="c_yellow_joint_ctrl" joint="c_yellow_joint" class="motor" />
+    <motor name="blue_joint_ctrl" joint="blue_joint" class="motor" />
+    <motor name="c_blue_joint_ctrl" joint="c_blue_joint" class="motor" />
+    <motor name="black_joint_ctrl" joint="black_joint" class="motor" />
+    <motor name="c_black_joint_ctrl" joint="c_black_joint" class="motor" />
+  </actuator>
+
+  <contact>
+    <exclude body1="base_link" body2="white_Link" />
+    <exclude body1="white_Link" body2="c_white_Link" />
+    <exclude body1="base_link" body2="brown_Link" />
+    <exclude body1="brown_Link" body2="c_brown_Link" />
+    <exclude body1="base_link" body2="green_Link" />
+    <exclude body1="green_Link" body2="c_green_Link" />
+    <exclude body1="base_link" body2="red_Link" />
+    <exclude body1="red_Link" body2="c_red_Link" />
+    <exclude body1="base_link" body2="yellow_Link" />
+    <exclude body1="yellow_Link" body2="c_yellow_Link" />
+    <exclude body1="base_link" body2="blue_Link" />
+    <exclude body1="blue_Link" body2="c_blue_Link" />
+    <exclude body1="base_link" body2="black_Link" />
+    <exclude body1="black_Link" body2="c_black_Link" />
+  </contact>
+
+  <sensor>
+    <framepos name="base_link_site_pos" objtype="site" objname="base_link_site" />
+    <framequat name="base_link_site_quat" objtype="site" objname="base_link_site" />
+    <framelinvel name="base_link_site_linvel" objtype="site" objname="base_link_site" />
+    <frameangvel name="base_link_site_angvel" objtype="site" objname="base_link_site" />
+    <velocimeter name="base_link_site_vel" site="base_link_site" />
+  </sensor>
+</mujoco>
